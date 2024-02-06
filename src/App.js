@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import SysAdminLayout from './Layout/SystemAdmin';
+import { Route, Routes } from 'react-router-dom';
+import SchoolAdminLayout from './Layout/SchoolAdmin';
+import Teacherlayout from './Layout/Teacher';
+import Login from './Pages/Login';
+import SchoolRegister from './Pages/Register/School';
+import TeacherRegister from './Pages/Register/Teacher';
+import ForgetPassword from './Pages/ForgetPassword/ForgetPassword';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path='/login' element={<Login />} />
+      <Route path='/register'>
+        <Route path='user' element={<TeacherRegister />} />
+        <Route path='school' element={<SchoolRegister />} />
+      </Route>
+      <Route path='/forgotpassword' element={<ForgetPassword />} />
+      <Route path="/sysadmin" element={<SysAdminLayout />}>
+
+    </Route>
+    <Route path="/schooladmin" element={<SchoolAdminLayout />}>
+
+    </Route>
+    <Route path="/teacher" element={<Teacherlayout />}>
+
+    </Route>
+
+    </Routes>
+    
   );
 }
 
